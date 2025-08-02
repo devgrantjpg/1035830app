@@ -3,83 +3,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register & Login</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="firebaseauth.js"></script>
+    <title>Homepage</title>
+    <style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+/* Hero */
+.hero {
+  background-image: url('/industrial/cuttingMachine.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 88vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 1.5rem 2.5rem;
+  border-radius: 10px;
+}
+
+.hero-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Product Section */
+.products-container {
+  padding: 2rem;
+}
+
+.product {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  background-color: #f4f4f4;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 8px;
+  gap: 2rem;
+}
+
+.product-info {
+  flex: 1 1 72%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info img {
+  width: 100%;
+  height: 60vh;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+
+.product-description {
+  background-color: #000;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.product-description h3 {
+  margin: 0;
+}
+
+.coupon {
+  flex: 0 0 25%;
+  background-color: #fff3e0;
+  padding: 2rem;
+  border: 2px dashed #ff6600;
+  border-radius: 8px;
+  text-align: center;
+  align-self: center;
+}
+
+.coupon h2 {
+  color: #ff6600;
+  margin-bottom: 1rem;
+}
+
+.shop-button {
+  background-color: #ff6600;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Divider Line */
+.product-divider {
+  width: 90%;
+  margin: 0 auto 2rem auto;
+  height: 1px;
+  background: #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .product {
+    flex-direction: column;
+  }
+
+  .coupon {
+    flex: 0 0 100%;
+    margin-top: 1.5rem;
+    align-self: stretch;
+  }
+
+  .product-info img {
+    height: 45vh;
+  }
+
+}
+
+
+    </style>
+    <script type="module" src="./homepage.js"></script>
 </head>
 <body>
-    <div class="container" id="signup" style="display:none;">
-      <h1 class="form-title">Register</h1>
-      <form method="post" action="">
-        <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
-        <div class="input-group">
-           <i class="fas fa-user"></i>
-           <input type="text"  id="fName" placeholder="First Name" required>
-           <label for="fname">First Name</label>
+    <!-- <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo"></div>
+      <ul class="navbar-links">
+        <li><a href="https://codegit-ftq2.vercel.app/">Codegit</a></li>
+      </ul>
+    </div>
+  </nav> -->
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-content">
+      <h2>SMVM Wholesale</h2>
+      <h1>Innovation and Quality</h1>
+      <!--
+      <a href="/industrial">
+        <button class="cta-button">Whole Sale</button>
+      </a>
+      -->
+    </div>
+  </div>
+
+  <!-- Products -->
+    <div class="products-container">
+    <!-- Repeat this block for each product -->
+    <div class="product">
+      <div class="product-info">
+        <img src="/industrial/IndustrailMachines.png" alt="CNC Machine" />
+        <div class="product-description">
+          <h3>Portable Plasma Machine</h3>
+          <p>Top-tier industrial equipment designed for reliability and performance.</p>
         </div>
-        <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="text"  id="lName" placeholder="Last Name" required>
-            <label for="lName">Last Name</label>
-        </div>
-        <div class="input-group">
-            <i class="fas fa-envelope"></i>
-            <input type="email"  id="rEmail" placeholder="Email" required>
-            <label for="rEmail">Email</label>
-        </div>
-        <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="rPassword"  placeholder="Password" required>
-            <label for="rPassword">Password</label>
-        </div>
-       <button class="btn" id="submitSignUp" >Sign Up</button>
-      </form>
-      <p class="or">
-        ----------or--------
-      </p>
-      <!-- <div class="icons">
-        <i class="fab fa-google"></i>
-        <i class="fab fa-facebook"></i>
-      </div> -->
-      <div class="links">
-        <p>Already Have Account ?</p>
-        <button id="signInButton">Sign In</button>
+      </div>
+      <div class="coupon">
+        <h2>10% OFF</h2>
+        <p>Limited time offer on CNC Machine.</p>
+        <a href="Signin.html">
+          <button class="shop-button">Sign in</button>
+        </a>
       </div>
     </div>
 
-  <div class="container" id="signIn">
-        <h1 class="form-title">Sign In</h1>
-        <form method="post" action="">
-          <div id="signInMessage" class="messageDiv" style="display:none;"></div>
-
-          <div class="input-group">
-              <i class="fas fa-envelope"></i>
-              <input type="email"  id="email" placeholder="Email" required>
-              <label for="email">Email</label>
-          </div>
-          <div class="input-group">
-              <i class="fas fa-lock"></i>
-            <input type="password" id="password"  placeholder="Password" required>
-              <label for="password">Password</label>
-          </div>
-          <p class="recover">
-           
-          </p>
-         <button  class="btn"  id="submitSignIn">Sign In</button>
-        </form>
-        <p class="or">
-          ----------or--------
-        <!-- </p>
-        <div class="icons">
-          <i class="fab fa-google"></i>
-          <i class="fab fa-facebook"></i>
-        </div> -->
-        <div class="links">
-          <p>Don't have account yet?</p>
-          <button id="signUpButton">Sign Up</button>
+  <div class="products-container">
+    <!-- Repeat this block for each product -->
+    <div class="product">
+      <div class="product-info">
+        <img src="/industrial/CNCmachine.png" alt="CNC Machine" />
+        <div class="product-description">
+          <h3>CNC Machine</h3>
+          <p>Top-tier industrial equipment designed for reliability and performance.</p>
         </div>
       </div>
-      <script src="script.js"></script>
+      <div class="coupon">
+        <h2>10% OFF</h2>
+        <p>Limited time offer on CNC Machine.</p>
+        <a href="Signin.html">
+          <button class="shop-button">Sign in</button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Repeat similar blocks for the rest of the products -->
+    <!-- Example: Portable plasma machine -->
+    <div class="product">
+      <div class="product-info">
+        <img src="/industrial/excavators.png" alt="Portable plasma machine" />
+        <div class="product-description">
+          <h3>1.2 Mini Excavator</h3>
+          <p>Top-tier industrial equipment designed for reliability and performance.</p>
+        </div>
+      </div>
+      <div class="coupon">
+        <h2>12% OFF</h2>
+        <p>Limited time offer on Portable plasma machine.</p>
+        <a href="Signin.html">
+          <button class="shop-button">Sign in</button>
+        </a>
+      </div>
+    </div>
+
+        <div class="product">
+      <div class="product-info">
+        <img src="/industrial/wheelLoader.png" alt="Portable plasma machine" />
+        <div class="product-description">
+          <h3>Wheel Loader</h3>
+          <p>Top-tier industrial equipment designed for reliability and performance.</p>
+        </div>
+      </div>
+      <div class="coupon">
+        <h2>5% OFF</h2>
+        <p>Limited time offer on Portable plasma machine.</p>
+        <a href="Signin.html">
+          <button class="shop-button">Sign in</button>
+        </a>
+      </div>
+    </div>
+        <div class="product">
+      <div class="product-info">
+        <img src="/industrial/skidsteer.png" alt="Portable plasma machine" />
+        <div class="product-description">
+          <h3>Skid Steer</h3>
+          <p>Top-tier industrial equipment designed for reliability and performance.</p>
+        </div>
+      </div>
+      <div class="coupon">
+        <h2>5% OFF</h2>
+        <p>Limited time offer on Portable plasma machine.</p>
+        <a href="Signin.html">
+          <button class="shop-button">Sign in</button>
+        </a>
+      </div>
+    </div>
+        <div class="product">
+      <div class="product-info">
+        <img src="/industrial/tablesaw.png" alt="Portable plasma machine" />
+        <div class="product-description">
+          <h3>Table Saw</h3>
+          <p>Top-tier industrial equipment designed for reliability and performance.</p>
+        </div>
+      </div>
+      <div class="coupon">
+        <h2>12% OFF</h2>
+        <p>Limited time offer on Portable plasma machine.</p>
+        <a href="Signin.html">
+          <button class="shop-button">Sign in</button>
+        </a>
+      </div>
+    </div>
+        <div class="product">
+      <div class="product-info">
+        <img src="/industrial/welderPositioning.png" alt="Portable plasma machine" />
+        <div class="product-description">
+          <h3>Welder Positioning</h3>
+          <p>Top-tier industrial equipment designed for reliability and performance.</p>
+        </div>
+      </div>
+      <div class="coupon">
+        <h2>12% OFF</h2>
+        <p>Limited time offer on Portable plasma machine.</p>
+        <a href="Signin.html">
+          <button class="shop-button">Sign in</button>
+        </a>
+      </div>
+    </div>
+        <div class="product">
+      <div class="product-info">
+        <img src="/industrial/milling.png" alt="Portable plasma machine" />
+        <div class="product-description">
+          <h3>Milling Table</h3>
+          <p>Top-tier industrial equipment designed for reliability and performance.</p>
+        </div>
+      </div>
+      <div class="coupon">
+        <h2>12% OFF</h2>
+        <p>Limited time offer on Portable plasma machine.</p>
+        <a href="Signin.html">
+          <button class="shop-button">Sign in</button>
+        </a>
+      </div>
+    </div>
+     
+    <!-- Add remaining products following the same pattern -->
+  </div>
 </body>
 </html>
